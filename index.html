@@ -1,110 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VaidhGPT - AI Vaidh</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-  <style>
-    body {
-      background: #f9f5ee;
-      font-family: 'Segoe UI', sans-serif;
-      color: #1a1a1a;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VaidhGPT – AI Ayurveda + Unani</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+    <style>
+      body {
+        background-color: #f5efe4;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .hero {
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+      .hero img {
+        max-width: 260px;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+      }
+      form {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        max-width: 400px;
+        margin: 1rem auto;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      }
+      .info-cards {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+      }
+      .info-cards article {
+        background: white;
+        padding: 1rem;
+        border-radius: 0.75rem;
+        width: 280px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        text-align: center;
+      }
+      #chat-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 320px;
+        height: 500px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 999;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="hero">
+        <img src="https://drive.google.com/uc?export=view&id=1yqPfa-cLOm8d5fTGppRfs1_QhDx39pNQ" alt="VaidhGPT Doctor" />
+        <h1>AI Vaidh. Real Conversations.<br />Shuddh Chikitsa.</h1>
+        <p>Personalized Ayurvedic and Unani healing with AI-based consultation</p>
+      </section>
 
-    header, main, section {
-      text-align: center;
-    }
+      <form id="main-form">
+        <h2 style="text-align:center;">Enter Your Details</h2>
+        <input type="text" id="name" placeholder="Name" required />
+        <input type="tel" id="mobile" placeholder="Mobile Number" required />
+        <button type="submit">Verify</button>
+      </form>
 
-    header img {
-      height: 60px;
-      margin: 1rem auto;
-    }
+      <section>
+        <h2 style="text-align: center;">Why VaidhGPT?</h2>
+        <div class="info-cards">
+          <article>
+            <h3>Trusted Wisdom</h3>
+            <p>Rooted in ancient Ayurvedic & Unani scriptures</p>
+          </article>
+          <article>
+            <h3>Natural Approach</h3>
+            <p>Herbal treatments tailored to your Dosh</p>
+          </article>
+          <article>
+            <h3>Personalized Care</h3>
+            <p>Mantra-based advice with respectful follow-up</p>
+          </article>
+        </div>
+      </section>
+    </main>
 
-    .doctor-img {
-      max-width: 300px;
-      margin: 2rem auto 1rem;
-      display: block;
-      border-radius: 1rem;
-    }
+    <!-- Chatbot -->
+    <div id="chat-container">
+      <iframe src="https://vaidhgpt-chat.replit.app" style="width:100%; height:100%; border:none; border-radius:12px;"></iframe>
+    </div>
 
-    form {
-      max-width: 400px;
-      margin: auto;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    }
-
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 3rem;
-      gap: 1rem;
-    }
-
-    .feature-box {
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      width: 280px;
-    }
-
-    .feature-box img {
-      height: 40px;
-      margin-bottom: 0.5rem;
-    }
-
-    h1 {
-      font-size: 2.2rem;
-      color: #204020;
-    }
-
-    h2 {
-      color: #333;
-    }
-  </style>
-</head>
-<body>
-
-<header>
-  <img src="https://drive.google.com/uc?export=view&id=1Nv8FOohbIYCWwDr6Eatc3pki3qKtv-0s" alt="VaidhGPT Logo">
-</header>
-
-<main class="container">
-  <h1>AI Vaidh. Real Conversations.<br>Shuddh Chikitsa.</h1>
-  <p>Personalized Ayurvedic and Unani healing with AI-based consultation</p>
-
-  <img src="https://drive.google.com/uc?export=view&id=1yqPfa-cLOm8d5fTGppRfs1_QhDx39pNQ" alt="VaidhGPT Doctor" class="doctor-img">
-
-  <form>
-    <h2>Enter Your Details</h2>
-    <input type="text" placeholder="Name" required>
-    <input type="tel" placeholder="Mobile Number" required>
-    <button type="submit">Verify</button>
-  </form>
-</main>
-
-<section class="container features">
-  <div class="feature-box">
-    <img src="https://cdn-icons-png.flaticon.com/512/5951/5951535.png" alt="Wisdom Icon">
-    <h3>Trusted Wisdom</h3>
-    <p>Rooted in ancient Ayurvedic & Unani knowledge</p>
-  </div>
-  <div class="feature-box">
-    <img src="https://cdn-icons-png.flaticon.com/512/1689/1689163.png" alt="Natural Icon">
-    <h3>Natural Approach</h3>
-    <p>Herbal treatments & lifestyle-based guidance</p>
-  </div>
-  <div class="feature-box">
-    <img src="https://cdn-icons-png.flaticon.com/512/4290/4290854.png" alt="Personalized Icon">
-    <h3>Personalized Care</h3>
-    <p>Faith-based Mantra or Dua system as per user belief</p>
-  </div>
-</section>
-
-</body>
+    <!-- Optional JS logic -->
+    <script>
+      document.getElementById("main-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Form submitted! Chatbot will now help you.");
+        // You can add redirect/chatbot logic here
+      });
+    </script>
+  </body>
 </html>
