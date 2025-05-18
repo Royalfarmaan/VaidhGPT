@@ -70,7 +70,7 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       z-index: 999;
-      display: none; /* hidden initially */
+      display: none;
       overflow: hidden;
     }
 
@@ -84,7 +84,7 @@
     }
 
     #recaptcha-container {
-      margin-top: 1rem;
+      display: none; /* hide invisible recaptcha box */
     }
   </style>
 </head>
@@ -107,7 +107,7 @@
       <input type="tel" id="mobile" placeholder="10-digit Mobile Number" maxlength="10" required />
       <div id="recaptcha-container"></div>
       <button type="button" id="send-otp">Send OTP</button>
-      <input type="text" id="otp" placeholder="Enter OTP" style="margin-top: 1rem;" />
+      <input type="text" id="otp" placeholder="Enter OTP" autocomplete="one-time-code" style="margin-top: 1rem;" />
       <button type="submit">Verify</button>
     </form>
 
@@ -151,19 +151,29 @@
     let confirmationResult;
 
     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-      size: 'normal',
-      callback: function(response) {
-        console.log("Recaptcha verified");
+      size: 'invisible',
+      callback: function (response) {
+        console.log("Invisible reCAPTCHA verified");
+      },
+      'expired-callback': function () {
+        alert("reCAPTCHA expired. Please refresh.");
       }
+    });
+
+    window.recaptchaVerifier.render().then(function (widgetId) {
+      window.recaptchaWidgetId = widgetId;
     });
 
     document.getElementById("send-otp").onclick = function () {
       const phone = document.getElementById("mobile").value.trim();
-      if (phone.length !== 10) {
+      if (phone.length !== 10 || isNaN(phone)) {
         alert("Enter a valid 10-digit mobile number.");
         return;
       }
+
       const fullPhone = "+91" + phone;
+      grecaptcha.reset(window.recaptchaWidgetId); // reset captcha before sending OTP
+
       firebase.auth().signInWithPhoneNumber(fullPhone, window.recaptchaVerifier)
         .then(function (result) {
           confirmationResult = result;
@@ -194,5 +204,3 @@
 
 </body>
 </html>
-
-
